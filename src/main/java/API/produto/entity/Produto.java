@@ -1,9 +1,7 @@
 package API.produto.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -16,6 +14,8 @@ public class Produto {
     private Double precoIndividual;
     private Double precoTotal;
     private Integer quantidade;
+    @ManyToMany(cascade = CascadeType.ALL)
+    List<Cliente> clienteList;
 
     public Produto(){
 
@@ -27,9 +27,6 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getNome() {
         return nome;

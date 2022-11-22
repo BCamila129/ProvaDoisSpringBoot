@@ -1,9 +1,6 @@
 package API.produto.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,6 +16,8 @@ public class Endereco {
     private Integer parcelas;
     private Double valorTotal;
     private String itens;
+    @ManyToMany(cascade = CascadeType.ALL)
+    List<Produto> produtoList;
 
     public Endereco(){
 
@@ -32,11 +31,9 @@ public class Endereco {
         this.parcelas = parcelas;
         this.valorTotal = valorTotal;
         this.itens = itens;
+
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getEndereco() {
         return endereco;
